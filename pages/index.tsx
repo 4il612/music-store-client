@@ -1,15 +1,17 @@
 import React from 'react'
 import { Button } from '@mui/material'
 import NavBar from '../components/NavBar'
+import MainLayout from '../layout/MainLayout'
 
 const Index = () => {
     return <>
-        <NavBar/>
-        <div className='center'>
-            <h1>Welcome to music-store</h1>
-            <h3>There are best tracks special for you!</h3>
-            <Button>Kekw</Button>
-        </div>
+        <MainLayout>
+            <div className='center'>
+                <h1>Welcome to music-store</h1>
+                <h3>There are best tracks special for you!</h3>
+                <Button>Kekw</Button>
+            </div>
+        </MainLayout>
         
         <style jsx>
             {`

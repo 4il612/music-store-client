@@ -18,8 +18,20 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
+import { useRouter } from 'next/router';
 
 const drawerWidth = 240;
+
+type menuItem = {
+    text: string
+    href: string
+}
+
+const menuItems: menuItem[] = [
+    {text: 'Home', href: '/'},
+    {text: 'Tracks', href: '/tracks'},
+    {text: 'Albums', href: '/albums'}
+]
 
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })<{
   open?: boolean;
@@ -73,6 +85,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 export default function NavBar() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+  const router = useRouter()
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -120,26 +133,19 @@ export default function NavBar() {
           </IconButton>
         </DrawerHeader>
         <List>
-          {['Home', 'Tracks', 'Albums'].map((text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton>
+          {menuItems.map((item, index) => (
+            <ListItem key={item.text} disablePadding>
+              <ListItemButton onClick={() => router.push(item.href)}>
                 <ListItemIcon>
                   {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
                 </ListItemIcon>
-                <ListItemText primary={text} />
+                <ListItemText primary={item.text} />
               </ListItemButton>
             </ListItem>
           ))}
         </List>
-        <div style={{
-            "position": "absolute",
-            "bottom": 0,
-        }}>
-            <Divider/>
-        <List style={{
-            //TODO:need fix static width
-            width: 239
-        }}>
+        <Divider/>
+        <List>
           {['About us', 'Become a partner'].map((text, index) => (
             <ListItem key={text} disablePadding>
               <ListItemButton>
@@ -148,7 +154,6 @@ export default function NavBar() {
             </ListItem>
           ))}
         </List>
-        </div>
       </Drawer>
     </Box>
   );
