@@ -144,16 +144,22 @@ export default function NavBar() {
             </ListItem>
           ))}
         </List>
-        <Divider/>
-        <List>
-          {['About us', 'Become a partner'].map((text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton>
-                <ListItemText primary={text} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
+        <div style={{
+          position: "absolute",
+          bottom: 0,
+          width: "100%"
+        }}>
+          <Divider/>
+          <List>
+            {['About us', 'Become a partner'].map((text, index) => (
+              <ListItem key={text} disablePadding>
+                <ListItemButton>
+                  <ListItemText primary={text} />
+                </ListItemButton>
+              </ListItem>
+            ))}
+          </List>
+        </div>
       </Drawer>
     </Box>
   );
