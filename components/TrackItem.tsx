@@ -3,6 +3,7 @@ import {Card, IconButton, Grid} from '@mui/material'
 import styles from '../styles/TrackItem.module.scss'
 import { Delete, Pause, PlayArrow } from "@mui/icons-material"
 import Image from "next/image"
+import { useRouter } from "next/router"
 
 type TrackItemProps = {
     track: ITrack
@@ -10,12 +11,16 @@ type TrackItemProps = {
 }
 
 const TrackItem: React.FC<TrackItemProps> = ({track, active = false}) => {
+    const router = useRouter()
+
     return (
-        <Card className={styles.track}>
-            <IconButton>
+        <Card className={styles.track}
+            onClick={() => router.push('/tracks/' + track._id)}
+        >
+            <IconButton onClick={e => e.stopPropagation()}>
                 {!active ? <PlayArrow/> : <Pause/>}
             </IconButton>
-            <Image width={70} height={70} src={track.preview}/>
+            <Image alt={track.title} width={70} height={70} src={track.preview}/>
             <Grid container direction='column'
                 style={{
                     width: 200, margin: '0 20px'
