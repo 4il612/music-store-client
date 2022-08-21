@@ -1,4 +1,4 @@
-import { Pause, PlayArrow } from "@mui/icons-material";
+import { Pause, PlayArrow, VolumeUp } from "@mui/icons-material";
 import { Grid, IconButton } from "@mui/material";
 import styles from "../styles/Player.module.scss";
 import { ITrack } from "../types/Track";
@@ -51,6 +51,8 @@ const Player = () => {
 					{track.author}
 				</div>
 			</Grid>
+			<TrackProgress left={0} right={100} onChange={() => {}} />
+			<VolumeUp style={{ marginLeft: "auto" }} />
 			<TrackProgress left={0} right={100} onChange={() => {}} />
 		</div>
 	);
