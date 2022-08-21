@@ -1,3 +1,5 @@
 const initialState = {};
 
-const playerReducer = (state = initialState, action) => {};
+const playerReducer = (state = initialState, action: null) => {};
+
+export default playerReducer;
