@@ -13,7 +13,10 @@ const FileLoader = ({ setFile, accept, children }: FLProps) => {
   };
 
   return (
-    <div onClick={() => ref.current?.click()}>
+    <div
+      style={{ display: "inline-block" }}
+      onClick={() => ref.current?.click()}
+    >
       <input
         ref={ref}
         style={{ display: "none" }}
